@@ -4,7 +4,7 @@ import com.Schach.Alliance;
 import com.Schach.Board.Board;
 import com.Schach.Board.Move;
 
-import java.util.List;
+import java.util.Collection;
 
 public abstract class Piece {
 
@@ -17,5 +17,9 @@ public abstract class Piece {
     }
 
 
-    public abstract List<Move> calculateLegalMoves(final Board board);
+    public abstract Collection<Move> calculateLegalMoves(final Board board);
+
+    public Alliance getPieceAlliance() {
+        return this.pieceAlliance;
+    }
 }
