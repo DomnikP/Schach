@@ -41,14 +41,14 @@ public class Knight extends Piece {
                 final Square candidateDestinationTile = board.getSquare(candidateDestinationCoordinate);
 
                 if(!candidateDestinationTile.isSquareOccupied()) {
-                    legalMoves.add(new Move());
+                    legalMoves.add(new Move.NormalMove(board,this, candidateDestinationCoordinate)); //the knight performs a legal move
 
                 } else {
                     final Piece pieceAtDestination = candidateDestinationTile.getPiece();
                     final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
 
                     if(this.pieceAlliance != pieceAlliance) { //If the piece on that square is an enemy pice its a legal move and we take the square
-                        legalMoves.add(new Move());
+                        legalMoves.add(new Move.AttackMove(board,this,candidateDestinationCoordinate,pieceAtDestination)); //attack the piece
                     }
                 }
             }
